@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: url("./assets/Weather-app_Background-image.png") no-repeat;
+  background-size: cover;
+  /* Centering the app */
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+body footer {
+  /* position: absolute; */
+  font-size: 25px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: [footer-height];
+}
