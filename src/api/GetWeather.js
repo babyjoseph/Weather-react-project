@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const KEY = "51ac90b9c6a93c003f7e1e384516c23d";
+const KEY = process.env.REACT_APP_API_KEY;
 const URL_FORECAST = "https://api.openweathermap.org/data/2.5/forecast?q=";
 const URL_FORECAST_TODAY = "https://api.openweathermap.org/data/2.5/weather?q=";
 
