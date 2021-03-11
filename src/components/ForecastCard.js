@@ -10,7 +10,9 @@ export default function ForecastCard({ weather }) {
       days.current = weather.map((v, i, a) => {
         return (
           <Card key={i}>
-            <div className="day">{week[a[i][0]]}</div>
+            <div className="day">
+              {week[a[i][0]]} - {Math.round(a[i][1])}˚
+            </div>
             <img
               src={`http://openweathermap.org/img/wn/${a[i][2]}@2x.png`}
               alt="icon"
