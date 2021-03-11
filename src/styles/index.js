@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 //Main Wrapper
 export const MainWrapper = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
   width: 1152px;
   height: 720px;
   display: flex;
