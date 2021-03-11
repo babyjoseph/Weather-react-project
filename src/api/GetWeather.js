@@ -29,7 +29,9 @@ export const FetchNextDays = async (CountryName) => {
   try {
     const {
       data: { list },
-    } = await axios.get(`${URL_FORECAST + CountryName}&appid=${KEY}`);
+    } = await axios.get(
+      `${URL_FORECAST + CountryName}&units=metric&appid=${KEY}`
+    );
     let days = [];
     for (let i = 0; i < list.length; i += 8) {
       let temp = [];
