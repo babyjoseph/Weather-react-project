@@ -26,12 +26,11 @@ function App() {
       setSearchQueue((prevQueue) => (prevQueue = ""));
     }
   };
-  // useEffect(() => {
-  //   console.log(weatherDays);
-  // }, [weatherDays]);
+
   return (
     <MainWrapper>
       <SearchBar
+        setSearchQueue={setSearchQueue}
         searchQueue={searchQueue}
         handleChange={handleQueueChange}
         keyPressed={enterKeyQueue}
