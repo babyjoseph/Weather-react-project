@@ -96,17 +96,22 @@ export const Card = styled.div`
   box-shadow: -4px 6px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
+  text-align: left;
   gap: 15px;
 
   .day {
     margin-top: 25px;
-    width: 5.5em;
+    width: 100%;
     padding-left: 20px;
-    font-size: 30px;
+    font-size: 25px;
     color: #222;
+    text-align: left;
   }
   img {
     width: 120px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
