@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+//STYLES
 import { MainWrapper } from "./styles";
-
-import { FetchNextDays, FetchToday } from "./api/GetWeather";
+//API
+import { FetchNextDays } from "./api/GetWeather";
 import { CurrentForecast, Forecast, SearchBar } from "./components";
+//ROUTER
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   const [searchQueue, setSearchQueue] = useState("");
-  const [weatherData, setWeatherData] = useState({});
   const [weatherDays, setWeatherDays] = useState({});
 
   //Handle Search Queue change
@@ -17,27 +19,26 @@ function App() {
   //Handle Entered Queue
   const enterKeyQueue = async (keyEvent) => {
     if (keyEvent.key === "Enter") {
-      const todayData = await FetchToday(searchQueue);
       const nextDayData = await FetchNextDays(searchQueue);
-      // console.log(todayData);
+      // console.log(nextDayData);
 
-      setWeatherData((prevData) => (prevData = todayData));
       setWeatherDays((prevDay) => (prevDay = nextDayData.map((days) => days)));
       setSearchQueue((prevQueue) => (prevQueue = ""));
     }
   };
-
   return (
-    <MainWrapper>
-      <SearchBar
-        setSearchQueue={setSearchQueue}
-        searchQueue={searchQueue}
-        handleChange={handleQueueChange}
-        keyPressed={enterKeyQueue}
-      />
-      <CurrentForecast weather={weatherData} />
-      <Forecast weather={weatherDays} />
-    </MainWrapper>
+    <Router>
+      <MainWrapper>
+        <SearchBar
+          setSearchQueue={setSearchQueue}
+          searchQueue={searchQueue}
+          handleChange={handleQueueChange}
+          keyPressed={enterKeyQueue}
+        />
+        <CurrentForecast weather={weatherDays} />
+        <Forecast weather={weatherDays} />
+      </MainWrapper>
+    </Router>
   );
 }
 
