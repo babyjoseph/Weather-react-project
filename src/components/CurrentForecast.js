@@ -1,4 +1,5 @@
 import React from "react";
+import { Switch, Route } from "react-router-dom";
 import {
   CurrentWrapper,
   IconWrapper,
@@ -9,22 +10,30 @@ import {
 
 export default function CurrentForecastCard({ weather }) {
   return typeof weather[0] !== "undefined" ? (
-    <CurrentWrapper>
-      <LocationWrapper>
-        {weather[0][2]} <br /> {weather[0][3]}
-      </LocationWrapper>
-      <TempWrapper>
-        <div className="date">{weather[0][0]}</div>
-        <div className="temp">{Math.round(weather[0][1])}˚</div>
-        <div className="des">{weather[0][4]}</div>
-      </TempWrapper>
-      <IconWrapper>
-        <img
-          src={`http://openweathermap.org/img/wn/${weather[0][5]}@2x.png`}
-          alt="icon"
-        />
-      </IconWrapper>
-    </CurrentWrapper>
+    <Switch>
+      {weather.map((v, i, a) => {
+        return (
+          <Route path={`/${i}`}>
+            <CurrentWrapper>
+              <LocationWrapper>
+                {a[i][5]} <br /> {a[i][6]}
+              </LocationWrapper>
+              <TempWrapper>
+                <div className="date">{a[i][1]}</div>
+                <div className="temp">{Math.round(a[i][2])}˚C</div>
+                <div className="des">{a[i][3]}</div>
+              </TempWrapper>
+              <IconWrapper>
+                <img
+                  src={`http://openweathermap.org/img/wn/${a[i][4]}@2x.png`}
+                  alt="icon"
+                />
+              </IconWrapper>
+            </CurrentWrapper>
+          </Route>
+        );
+      })}
+    </Switch>
   ) : (
     <LoadingContent>ENTER COUNTRY NAME</LoadingContent>
   );
