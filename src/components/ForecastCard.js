@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Card, CardWrapper } from "../styles";
-import { Link } from "react-router-dom";
+import { Card, CardWrapper, StyledLink } from "../styles";
 
 export default function ForecastCard({ weather }) {
   const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -9,7 +8,7 @@ export default function ForecastCard({ weather }) {
     if (typeof weather[0] !== "undefined") {
       days.current = weather.map((v, i, a) => {
         return (
-          <Link to={`/${i}`}>
+          <StyledLink to={`/${i}`}>
             <Card key={i} data-cardindex={i}>
               <div className="day">
                 {week[a[i][0]]} | {Math.round(a[i][2])}˚C
@@ -19,7 +18,7 @@ export default function ForecastCard({ weather }) {
                 alt="icon"
               />
             </Card>
-          </Link>
+          </StyledLink>
         );
       });
     } else return;
