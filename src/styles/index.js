@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 //Main Wrapper
 export const MainWrapper = styled.div`
   width: 1152px;
-  height: 720px;
+  height: 620px;
   display: flex;
   border-radius: 98px;
   flex-direction: column;
@@ -16,7 +17,7 @@ export const MainWrapper = styled.div`
 //Search Bar
 export const Bar = styled.input`
   width: 440px;
-  height: 74px;
+  height: 64px;
   font-size: 30px;
   padding: 25px;
   background-color: #f3f3f3;
@@ -31,7 +32,7 @@ export const Bar = styled.input`
 //Current Forecast Wrapper
 export const CurrentWrapper = styled.div`
   width: 1038px;
-  height: 280px;
+  height: 180px;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -39,7 +40,7 @@ export const CurrentWrapper = styled.div`
 
 export const LocationWrapper = styled.div`
   width: 300px;
-  height: 280px;
+  height: 180px;
   font-size: 55px;
   text-align: center;
   display: flex;
@@ -48,26 +49,26 @@ export const LocationWrapper = styled.div`
 `;
 export const TempWrapper = styled.div`
   width: 428px;
-  height: 244px;
+  height: 144px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   .date {
-    font-size: 35px;
+    font-size: 25px;
     color: #4a4a4a;
   }
   .temp {
-    font-size: 105px;
+    font-size: 95px;
     color: #222;
   }
   .des {
-    font-size: 45px;
+    font-size: 35px;
     color: #6a6a6a;
   }
 `;
 export const IconWrapper = styled.div`
   width: 270px;
-  height: 270px;
+  height: 170px;
   display: grid;
   align-items: center;
   justify-content: center;
@@ -78,20 +79,20 @@ export const IconWrapper = styled.div`
 //Loading
 export const LoadingContent = styled(CurrentWrapper)`
   justify-content: center;
-  font-size: 80px;
+  font-size: 70px;
 `;
 
 //5 day Forecast Wrapper
 export const CardWrapper = styled.div`
   width: 1063px;
-  height: 235px;
+  height: 135px;
   display: flex;
   gap: 57px;
 `;
 
 export const Card = styled.div`
   width: 167px;
-  height: 235px;
+  height: 225px;
   border-radius: 25px;
   box-shadow: -4px 6px 4px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -114,4 +115,9 @@ export const Card = styled.div`
     margin-left: auto;
     margin-right: auto;
   }
+`;
+
+//Styled Component of ReactRouter
+export const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
