@@ -13,7 +13,7 @@ export default function CurrentForecastCard({ weather }) {
     <Switch>
       {weather.map((v, i, a) => {
         return (
-          <Route path={`/${i}`}>
+          <Route exact key={i} path={`/${i == 0 ? "" : i}`}>
             <CurrentWrapper>
               <LocationWrapper>
                 {a[i][5]} <br /> {a[i][6]}
