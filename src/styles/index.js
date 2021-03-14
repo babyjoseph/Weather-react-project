@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 
 //Main Wrapper
@@ -9,8 +9,7 @@ export const MainWrapper = styled.div`
   border-radius: 98px;
   flex-direction: column;
   align-items: center;
-  gap: 45px;
-  background: rgba(243, 243, 243, 0.2);
+  background: rgba(243, 243, 243, 0.3);
   font-family: "Poppins", sans-serif;
 `;
 
@@ -32,7 +31,7 @@ export const Bar = styled.input`
 //Current Forecast Wrapper
 export const CurrentWrapper = styled.div`
   width: 938px;
-  height: 180px;
+  height: 100%;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -74,16 +73,26 @@ export const IconWrapper = styled.div`
   justify-content: center;
   img {
     width: 270px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
   }
 `;
-//Loading
-export const LoadingContent = styled(CurrentWrapper)`
-  justify-content: center;
-  font-size: 70px;
+//Home and Loading Content
+const TypeAnimation = keyframes`
+  from{
+    width: 0;
+  }
+  to{
+    width: 938px;
+  }
 `;
+export const EnterCountry = styled(CurrentWrapper)`
+  margin-left: 120px;
+  font-size: 70px;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: ${TypeAnimation} 2s 1 steps(88) normal both;
+`;
+
+export const LoadingContent = styled(EnterCountry)``;
 
 //5 day Forecast Wrapper
 export const CardWrapper = styled.div`
@@ -104,6 +113,10 @@ export const Card = styled.div`
   /* align-items: center; */
   text-align: left;
   gap: 15px;
+  transition: box-shadow 0.8s ease;
+  &:hover {
+    box-shadow: -4px 6px 4px #f3f3f3;
+  }
 
   .day {
     margin-top: 25px;

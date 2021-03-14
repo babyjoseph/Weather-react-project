@@ -5,7 +5,7 @@ import {
   IconWrapper,
   LocationWrapper,
   TempWrapper,
-  LoadingContent,
+  EnterCountry,
 } from "../styles";
 
 export default function CurrentForecastCard({ weather }) {
@@ -13,7 +13,7 @@ export default function CurrentForecastCard({ weather }) {
     <Switch>
       {weather.map((v, i, a) => {
         return (
-          <Route exact key={i} path={`/${i == 0 ? "" : i}`}>
+          <Route exact key={i} path={`/${i === 0 ? "" : i}`}>
             <CurrentWrapper>
               <LocationWrapper>
                 {a[i][5]} <br /> {a[i][6]}
@@ -35,6 +35,6 @@ export default function CurrentForecastCard({ weather }) {
       })}
     </Switch>
   ) : (
-    <LoadingContent>ENTER COUNTRY NAME</LoadingContent>
+    <EnterCountry>ENTER CITY NAME</EnterCountry>
   );
 }

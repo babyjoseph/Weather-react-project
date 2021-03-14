@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 //STYLES
-import { MainWrapper } from "./styles";
+import { MainWrapper, LoadingContent } from "./styles";
 import GlobalStyle from "./GlobalStyle";
 //API
 import { FetchNextDays } from "./api/GetWeather";
@@ -11,7 +11,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 function App() {
   const [searchQueue, setSearchQueue] = useState("");
   const [weatherDays, setWeatherDays] = useState({});
-  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   //Handle Search Queue change
   const handleQueueChange = (e) => {
@@ -22,15 +22,16 @@ function App() {
   const enterKeyQueue = async (keyEvent) => {
     if (keyEvent.key === "Enter") {
       const weatherData = await FetchNextDays(searchQueue);
+      setLoading((prevData) => (prevData = true));
       // console.log(weatherData);
       if (weatherData === undefined) {
-        setError((prevError) => (prevError = true));
         alert("Unknown city");
+        setLoading((prevData) => (prevData = false));
       } else {
-        setError((prevError) => (prevError = false));
         setWeatherDays(
           (prevDay) => (prevDay = weatherData.map((days) => days))
         );
+        setLoading((prevData) => (prevData = false));
       }
       setSearchQueue((prevQueue) => (prevQueue = ""));
     }
@@ -46,7 +47,11 @@ function App() {
             handleChange={handleQueueChange}
             keyPressed={enterKeyQueue}
           />
-          <CurrentForecast weather={weatherDays} />
+          {!loading ? (
+            <CurrentForecast weather={weatherDays} />
+          ) : (
+            <LoadingContent> . . . </LoadingContent>
+          )}
           <Forecast weather={weatherDays} />
         </MainWrapper>
       </Router>
