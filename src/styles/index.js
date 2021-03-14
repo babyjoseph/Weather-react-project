@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 //Main Wrapper
 export const MainWrapper = styled.div`
-  width: 1152px;
+  width: 1052px;
   height: 620px;
   display: flex;
   border-radius: 98px;
@@ -16,7 +16,7 @@ export const MainWrapper = styled.div`
 
 //Search Bar
 export const Bar = styled.input`
-  width: 440px;
+  width: 430px;
   height: 64px;
   font-size: 30px;
   padding: 25px;
@@ -31,7 +31,7 @@ export const Bar = styled.input`
 
 //Current Forecast Wrapper
 export const CurrentWrapper = styled.div`
-  width: 1038px;
+  width: 938px;
   height: 180px;
   display: flex;
   align-items: center;
@@ -68,12 +68,15 @@ export const TempWrapper = styled.div`
 `;
 export const IconWrapper = styled.div`
   width: 270px;
-  height: 170px;
+  height: 100%;
   display: grid;
   align-items: center;
   justify-content: center;
   img {
     width: 270px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
 //Loading
@@ -84,14 +87,15 @@ export const LoadingContent = styled(CurrentWrapper)`
 
 //5 day Forecast Wrapper
 export const CardWrapper = styled.div`
-  width: 1063px;
-  height: 135px;
+  width: 963px;
+  height: 255px;
+  /* background: #222; */
   display: flex;
-  gap: 57px;
+  gap: 40px;
 `;
 
 export const Card = styled.div`
-  width: 167px;
+  width: 160px;
   height: 225px;
   border-radius: 25px;
   box-shadow: -4px 6px 4px rgba(0, 0, 0, 0.25);
