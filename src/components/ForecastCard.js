@@ -8,7 +8,7 @@ export default function ForecastCard({ weather }) {
     if (typeof weather[0] !== "undefined") {
       days.current = weather.map((v, i, a) => {
         return (
-          <StyledLink key={i} to={`/${i == 0 ? "" : i}`}>
+          <StyledLink key={i} to={`/${i === 0 ? "" : i}`}>
             <Card data-cardindex={i}>
               <div className="day">
                 {week[a[i][0]]} | {Math.round(a[i][2])}˚C
