@@ -1,12 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Card, CardWrapper, StyledLink } from "../styles";
 
 export default function ForecastCard({ weather }) {
   const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const days = useRef(null);
-  useEffect(() => {
-    if (typeof weather[0] !== "undefined") {
-      days.current = weather.map((v, i, a) => {
+  return typeof weather[0] !== "undefined" ? (
+    <CardWrapper>
+      {weather.map((v, i, a) => {
         return (
           <StyledLink key={i} to={`/${i === 0 ? "" : i}`} draggable="false">
             <Card data-cardindex={i}>
@@ -21,8 +20,9 @@ export default function ForecastCard({ weather }) {
             </Card>
           </StyledLink>
         );
-      });
-    } else return;
-  }, [weather]);
-  return <CardWrapper>{days.current}</CardWrapper>;
+      })}
+    </CardWrapper>
+  ) : (
+    ""
+  );
 }
