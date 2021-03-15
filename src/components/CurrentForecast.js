@@ -27,6 +27,7 @@ export default function CurrentForecastCard({ weather }) {
                 <img
                   src={`http://openweathermap.org/img/wn/${a[i][4]}@2x.png`}
                   alt="icon"
+                  draggable="false"
                 />
               </IconWrapper>
             </CurrentWrapper>
