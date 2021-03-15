@@ -19,9 +19,13 @@ const respond = Object.keys(screens).reduce((accumulator, label) => {
 export const MainWrapper = styled.div`
   width: 1052px;
   height: 620px;
-  border-radius: 98px;
-  background: rgba(243, 243, 243, 0.3);
-  font-family: "Poppins", sans-serif;
+  background: rgba(34, 34, 34, 0.1);
+  box-shadow: 0 8px 32px 0 #0c0c1e80;
+  backdrop-filter: blur(10.5px);
+  -webkit-backdrop-filter: blur(10.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-family: "Poppins", georgia;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,18 +42,48 @@ export const MainWrapper = styled.div`
   `}
 `;
 
+//Home and Loading Content
+const AppearAnimation = keyframes`
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+`;
+export const EnterCountry = styled.div`
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 70px;
+  color: #f3f3f3;
+  white-space: nowrap;
+  animation: ${AppearAnimation} 1s ease-in-out;
+
+  ${respond.sm`
+    font-size: 40px;
+  `}
+  ${respond.xs`
+      font-size: 30px;
+    `}
+`;
+
+export const LoadingContent = styled(EnterCountry)``;
+
 //Search Bar
 export const Bar = styled.input`
   width: 430px;
   height: 64px;
   font-size: 30px;
   padding: 25px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 0 0 25px 25px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   outline: none;
   font-family: "Poppins", sans-serif;
-  background: inherit;
+  color: #f3f3f3;
+  background: transparent;
   ${respond.xs`
     width: 280px;
     height: 50px;
@@ -58,7 +92,7 @@ export const Bar = styled.input`
 `;
 
 //Current Forecast Wrapper
-export const CurrentWrapper = styled.div`
+export const CurrentWrapper = styled.main`
   width: 938px;
   height: 100%;
   display: grid;
@@ -78,15 +112,16 @@ export const CurrentWrapper = styled.div`
   `}
 `;
 
-export const LocationWrapper = styled.div`
+export const LocationWrapper = styled.section`
   width: 300px;
   height: 180px;
   font-size: 55px;
   text-align: center;
   display: flex;
   align-items: center;
-  color: #222;
+  color: #f3f3f3;
   grid-area: loc;
+  animation: ${AppearAnimation} 1s ease-in-out;
   ${respond.sm`
       display: grid;
       align-items: center;
@@ -99,31 +134,35 @@ export const LocationWrapper = styled.div`
       font-size: 25px;
     `}
 `;
-export const TempWrapper = styled.div`
+export const TempWrapper = styled.section`
   width: 428px;
   height: 144px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   grid-area: temp;
+  padding-left: 50px;
+  opacity: 0;
+  animation: ${AppearAnimation} 1s 0.5s ease-in-out forwards;
   .date {
-    font-size: 25px;
-    color: #4a4a4a;
+    font-size: 30px;
+    color: #f3f3f380;
   }
   .temp {
     font-size: 95px;
-    color: #222;
+    color: #f3f3f3;
   }
   .des {
     font-size: 35px;
-    color: #6a6a6a;
+    color: #f3f3f380;
   }
 
   ${respond.sm`
       width: 240px;
       height: 100%;
+      padding-left: 0;
       .date{
-        font-size: 15px;
+        font-size: 18px;
       }
       .temp{
         font-size: 85px;
@@ -140,13 +179,15 @@ export const TempWrapper = styled.div`
     } 
 `}
 `;
-export const IconWrapper = styled.div`
+export const IconWrapper = styled.figure`
   width: 270px;
   height: 100%;
   display: grid;
   align-items: center;
   justify-content: center;
   grid-area: icon;
+  opacity: 0;
+  animation: ${AppearAnimation} 1s 1s ease-in-out forwards;
   img {
     width: 270px;
   }
@@ -158,33 +199,6 @@ export const IconWrapper = styled.div`
       width: 300px;
     `}
 `;
-//Home and Loading Content
-const AppearAnimation = keyframes`
-  from{
-    opacity: 0;
-  }
-  to{
-    opacity: 1;
-  }
-`;
-export const EnterCountry = styled.div`
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  font-size: 70px;
-  white-space: nowrap;
-  animation: ${AppearAnimation} 1s ease-in-out;
-
-  ${respond.sm`
-    font-size: 40px;
-  `}
-  ${respond.xs`
-      font-size: 30px;
-    `}
-`;
-
-export const LoadingContent = styled(EnterCountry)``;
 
 //5 day Forecast Wrapper
 export const CardWrapper = styled.div`
@@ -192,20 +206,23 @@ export const CardWrapper = styled.div`
   height: 255px;
   display: flex;
   gap: 40px;
+  opacity: 0;
+  animation: ${AppearAnimation} 1s 1.5s ease-in-out forwards;
+  //Scroll bar
   ::-webkit-scrollbar {
     background: transparent;
     height: 10px;
     width: 10px;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(254, 254, 255, 0.2);
     border-radius: 15px;
   }
   ${respond.sm`
     cursor: grab;
     overflow: auto;
     padding: 0 15px;
-      width: 480px;
+      width: 450px;
       gap: 15px;
     `}
   ${respond.xs`
@@ -216,6 +233,7 @@ export const CardWrapper = styled.div`
 export const Card = styled.div`
   width: 160px;
   height: 225px;
+  border: 1px solid rgba(224, 224, 224, 0.5);
   border-radius: 25px;
   box-shadow: -4px 6px 4px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -225,12 +243,7 @@ export const Card = styled.div`
   gap: 15px;
   transition: box-shadow 0.8s ease;
   &:hover {
-    box-shadow: -4px 6px 4px #f3f3f3;
-  }
-  .noSelect {
-    -webkit-user-select: none; /* Chrome all / Safari all */
-    -moz-user-select: none; /* Firefox all */
-    -ms-user-select: none; /* IE 10+ */
+    box-shadow: -4px 6px 4px lightskyblue;
   }
 
   .day {
@@ -238,7 +251,7 @@ export const Card = styled.div`
     width: 100%;
     padding-left: 20px;
     font-size: 25px;
-    color: #222;
+    color: #f3f3f3;
     text-align: left;
   }
   img {
