@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 //STYLES
 import { MainWrapper, LoadingContent } from "./styles";
 import GlobalStyle from "./GlobalStyle";
@@ -12,6 +12,7 @@ function App() {
   const [searchQueue, setSearchQueue] = useState("");
   const [weatherDays, setWeatherDays] = useState({});
   const [loading, setLoading] = useState(false);
+  const focusOnMe = useRef(null);
 
   //Handle Search Queue change
   const handleQueueChange = (e) => {
@@ -34,6 +35,7 @@ function App() {
         setLoading((prevData) => (prevData = false));
       }
       setSearchQueue((prevQueue) => (prevQueue = ""));
+      focusOnMe.current.focus();
     }
   };
   return (
@@ -48,7 +50,7 @@ function App() {
             keyPressed={enterKeyQueue}
           />
           {!loading ? (
-            <CurrentForecast weather={weatherDays} />
+            <CurrentForecast weather={weatherDays} myRef={focusOnMe} />
           ) : (
             <LoadingContent> . . . </LoadingContent>
           )}

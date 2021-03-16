@@ -8,13 +8,13 @@ import {
   EnterCountry,
 } from "../styles";
 
-export default function CurrentForecastCard({ weather }) {
+export default function CurrentForecastCard({ weather, myRef }) {
   return typeof weather[0] !== "undefined" ? (
     <Switch>
       {weather.map((v, i, a) => {
         return (
           <Route exact key={i} path={`/${i === 0 ? "" : i}`}>
-            <CurrentWrapper>
+            <CurrentWrapper ref={myRef}>
               <LocationWrapper>
                 {a[i][5]} <br /> {a[i][6]}
               </LocationWrapper>
