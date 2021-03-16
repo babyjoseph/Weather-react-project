@@ -33,9 +33,9 @@ function App() {
           (prevDay) => (prevDay = weatherData.map((days) => days))
         );
         setLoading((prevData) => (prevData = false));
+        focusOnMe.current.focus();
       }
       setSearchQueue((prevQueue) => (prevQueue = ""));
-      focusOnMe.current.focus();
     }
   };
   return (
