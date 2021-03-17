@@ -12,11 +12,7 @@ export default function ForecastCard({ weather }) {
               <div className="day">
                 {week[a[i][0]]} | {Math.round(a[i][2])}˚C
               </div>
-              <img
-                src={`http://openweathermap.org/img/wn/${a[i][4]}@2x.png`}
-                alt="icon"
-                draggable="false"
-              />
+              <i className={`wi wi-owm-${a[i][4]}`}></i>
             </Card>
           </StyledLink>
         );

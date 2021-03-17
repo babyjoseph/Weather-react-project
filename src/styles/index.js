@@ -15,6 +15,7 @@ const respond = Object.keys(screens).reduce((accumulator, label) => {
   `;
   return accumulator;
 }, {});
+
 //Main Wrapper
 export const MainWrapper = styled.div`
   width: 1052px;
@@ -188,8 +189,9 @@ export const IconWrapper = styled.figure`
   grid-area: icon;
   opacity: 0;
   animation: ${AppearAnimation} 1s 1s ease-in-out forwards;
-  img {
-    width: 270px;
+  i {
+    font-size: 120px;
+    color: #f3f3f3;
   }
 
   ${respond.sm`
@@ -254,11 +256,12 @@ export const Card = styled.div`
     color: #f3f3f3;
     text-align: left;
   }
-  img {
-    width: 120px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  i {
+    font-size: 65px;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+    color: #f3f3f3;
   }
 
   ${respond.sm`

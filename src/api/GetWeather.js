@@ -17,7 +17,7 @@ export const FetchNextDays = async (CountryName) => {
       temp.push(new Date(list[i].dt * 1000).toDateString());
       temp.push(list[i].main.temp);
       temp.push(list[i].weather[0].description);
-      temp.push(list[i].weather[0].icon);
+      temp.push(list[i].weather[0].id);
       temp.push(city.name);
       temp.push(city.country);
       days.push(temp);

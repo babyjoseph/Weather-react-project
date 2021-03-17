@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import "./css/weather-icons.min.css";
+
 import App from "./App";
 
 const root = document.getElementById("root");

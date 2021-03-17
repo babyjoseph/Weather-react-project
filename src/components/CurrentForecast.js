@@ -24,11 +24,7 @@ export default function CurrentForecastCard({ weather, myRef }) {
                 <div className="des">{a[i][3]}</div>
               </TempWrapper>
               <IconWrapper>
-                <img
-                  src={`http://openweathermap.org/img/wn/${a[i][4]}@2x.png`}
-                  alt="icon"
-                  draggable="false"
-                />
+                <i className={`wi wi-owm-${a[i][4]}`}></i>
               </IconWrapper>
             </CurrentWrapper>
           </Route>
